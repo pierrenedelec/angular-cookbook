@@ -1,0 +1,50 @@
+name: Quality gate
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quality-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build French and English books
+    runs-on: ubuntu-latest
+    env:
+      MDBOOK_VERSION: 0.4.52
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+      - name: Install Rust
+        run: |
+          curl https://sh.rustup.rs -sSf | sh -s -- -y
+      - name: Set up cargo cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+            target/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ runner.os }}-cargo-
+      - name: Install mdBook
+        run: cargo install --force --version "${MDBOOK_VERSION}" mdbook
+      - name: Install mdBook preprocessors
+        uses: ./.github/workflows/install-mdbook
+      - name: Build French book
+        run: mdbook build -d book/fr
+      - name: Build English book
+        run: |
+          MDBOOK_OUTPUT__HTML__SITE_URL=/book/en/ \
+          MDBOOK_OUTPUT__HTML__REDIRECT='{}' \
+          MDBOOK_BOOK__LANGUAGE=en mdbook build -d book/en
