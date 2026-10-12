@@ -60,7 +60,7 @@
 - [State Management Overview](./state-management/README.md)
 
 # RxJS
-- [RxJS](./rxjs/README.md)
+- [RxJS](./rxjs/rxjs.md)
 
 # Internationalization
 - [Internationalization](./internationalization/README.md)
