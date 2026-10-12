@@ -16,6 +16,10 @@ runs:
       run: cargo install mdbook-i18n-helpers --locked --version 0.3.6 --force
       shell: bash
 
+    - name: Verify gettext preprocessor
+      run: command -v mdbook-gettext >/dev/null
+      shell: bash
+
     - name: Install mdbook-admonish
       run: cargo install mdbook-admonish --locked --version 1.20.0 --force
       shell: bash

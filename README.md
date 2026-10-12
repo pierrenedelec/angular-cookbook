@@ -82,11 +82,11 @@ cargo install mdbook-angular --version 0.3.4 --locked
 
 ### ![mdbook-i18n-helpers](https://img.shields.io/badge/mdbook--i18n--helpers-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
 ```sh
-cargo install mdbook-i18n-helpers
+cargo install mdbook-i18n-helpers --version 0.3.6 --locked
 ```
 [`mdbook-i18n-helpers`](https://github.com/google/mdbook-i18n-helpers) = "^0.3.6"
 
-
+This package installs the `mdbook-gettext` and `mdbook-xgettext` binaries used by the book's i18n workflow.
 
 ### i18n
 > ## ![i18n](https://img.shields.io/badge/i18n-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
