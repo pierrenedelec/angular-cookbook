@@ -64,7 +64,7 @@
   - [Live Component State Example](./state-management/live-example.md)
 
 # RxJS
-- [RxJS](./rxjs/README.md)
+- [RxJS](./rxjs/rxjs.md)
 
 # Internationalization
 - [Internationalization](./internationalization/README.md)
