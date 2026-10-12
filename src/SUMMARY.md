@@ -17,6 +17,7 @@
   - [Custom Pipe](./pipes/custom-pipe.md)
   - [Testing Pipe](./pipes/testing-pipe.md)
 - [Services and HttpClient](./http-client/README.md)
+  - [Creating and Using Angular Services](./http-client/services.md)
 
 # Templates and Data Binding
 - [Interpolation](./interpolation/index.md)
