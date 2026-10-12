@@ -78,6 +78,7 @@
 
 # Performance Optimization
 - [Performance Optimization](./performances/README.md)
+  - [Live Task List Example](./performances/performance-example.md)
 
 # Angular CLI and Tooling
 - [Package Manager](./package-manager/index.md)
