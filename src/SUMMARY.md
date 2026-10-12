@@ -9,8 +9,11 @@
 - [Dependency Injection](./dependency-injection/README.md)
 - [NgModules](./ngmodules/README.md)
 - [Pipes](./pipes/README.md)
+  - [Using Pipes in Templates](./pipes/using-pipes.md)
   - [Angular Built-in Pipes](./pipes/angular-built-in-pipes/angular-built-in-pipes.md)
     - [Percent Pipe](./pipes/angular-built-in-pipes/percent-pipe.md)
+  - [Async Pipe](./pipes/async-pipe.md)
+  - [Pure and Impure Pipes](./pipes/pure-and-impure-pipes.md)
   - [Custom Pipe](./pipes/custom-pipe.md)
   - [Testing Pipe](./pipes/testing-pipe.md)
 - [Services and HttpClient](./http-client/README.md)
@@ -34,6 +37,10 @@
 
 # Forms
 - [Forms](./forms/README.md)
+  - [Signal Forms](./forms/signal-forms/README.md)
+    - [Create your first Signal Form](./forms/signal-forms/first-form.md)
+    - [Validate a Signal Form](./forms/signal-forms/validation.md)
+    - [Submit a Signal Form](./forms/signal-forms/submission.md)
   - [Validation](./forms/validation.md)
   - [Create a custom validator](./forms/how-to-create-a-custom-validator.md)
   - [Create asynchronous validators](./forms/how-to-create-asynchronous-validators.md)
@@ -103,4 +110,3 @@
 - [Contributors](./contributors.md)
 - [Resources](./resources/README.md)
 - [How to contribute?](guide/how-to-contribute.md)
-

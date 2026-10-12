@@ -1,29 +1,42 @@
 # Pipes
 
+Pipes transform values for display in Angular templates. They keep formatting close
+to the view without changing the underlying component data:
 
-## TL;DR
+```html
+<p>{{ total | currency:'EUR' }}</p>
+```
+
+Angular ships pipes for common formatting tasks, including dates, numbers, text,
+and asynchronous values. You can also create a custom pipe when a transformation
+is specific to your application.
+
+## In this chapter
+
+- [Using pipes in templates](./using-pipes.md) covers pipe expressions, arguments,
+  chaining, and standalone imports.
+- [Angular built-in pipes](./angular-built-in-pipes/angular-built-in-pipes.md)
+  surveys the pipes available from `@angular/common`.
+- [The percent pipe](./angular-built-in-pipes/percent-pipe.md) formats ratios as
+  localized percentages.
+- [The async pipe](./async-pipe.md) unwraps `Observable` and `Promise` values and
+  manages subscriptions.
+- [Pure and impure pipes](./pure-and-impure-pipes.md) explains when Angular
+  reevaluates a pipe and why purity matters for performance.
+- [Custom pipes](./custom-pipe.md) shows how to implement a reusable transformation.
+- [Testing pipes](./testing-pipe.md) covers unit tests for the transformation and
+  its use in a template.
+
+## Quick rules
 
 ```admonish note
-Pipes are pure by default and for better performance it should remain true. 
-Pipes can be standalone
-Pipe's name typically uses lowerCamelCase because the name cannot contain hyphens.
+Prefer a built-in pipe when it already provides the formatting you need.
+Pipes are pure by default; keep them pure unless there is a compelling reason not to.
+In standalone components, import each pipe used by the template.
 ```
 
+Angular recommends naming the pipe class in `UpperCamelCase` and its template name
+in `lowerCamelCase`. The template name cannot contain hyphens. See the
+[Angular style guide](https://angular.dev/style-guide#style-02-09).
 
-### class Pipe
-```javascript
-class Pipe {
-  name: string;
-  pure?: boolean;
-  standalone?: boolean;
-}
-```
-
-## [Angular style guide ](https://angular.dev/style-guide#style-02-09)
-```admonish note
-Style 02-09
-Do use consistent names for all pipes, named after their feature. The pipe class name should use UpperCamelCase (the general convention for class names), and the corresponding name string should use lowerCamelCase. The name string cannot use hyphens ("dash-case" or "kebab-case").
-
-Why?
-Provides a consistent way to quickly identify and reference pipes.
-```
+For the official guide, see [Pipes](https://angular.dev/guide/templates/pipes).

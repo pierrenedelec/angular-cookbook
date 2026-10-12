@@ -1,66 +1,66 @@
 # Custom Pipe
 
+Create a custom pipe when a transformation belongs in a template and no built-in
+pipe already provides it. A pipe has a template name and a `transform` method.
+Implementing `PipeTransform` makes the method signature explicit.
 
-## TL;DR
+This example shortens long text and accepts an optional limit and suffix:
 
-```admonish note
-Create a custom pipe is about @Pipe decorator on a class wich implement PipeTransform interface
-leading to transform method implementation
-An Angular Pipe receive an input and some parameters 
-Try to keep your Pipe pure 
-
-You can use inject method or constructor to inject Service or Pipe. 
-```
-
-```typescript
+```ts
 import { Pipe, PipeTransform } from '@angular/core';
+
 @Pipe({
-  name: 'greet',
-  standalone: true,
+  name: 'truncate',
 })
-export class GreetPipe implements PipeTransform {
-  transform(value: string, param1: boolean, param2: boolean): string {
-    return `Hello ${value}`;
+export class TruncatePipe implements PipeTransform {
+  transform(
+    value: string | null | undefined,
+    limit = 30,
+    suffix = '…',
+  ): string {
+    if (value == null) {
+      return '';
+    }
+
+    const safeLimit = Math.max(0, limit);
+    return value.length > safeLimit
+      ? `${value.slice(0, safeLimit)}${suffix}`
+      : value;
   }
 }
 ```
 
-```typescript
-import {Component} from '@angular/core';
-import {ExponentialStrengthPipe} from './exponential-strength.pipe';
+The pipe is standalone by default in current Angular versions. Import it into the
+standalone component that uses it:
+
+```ts
+import { Component } from '@angular/core';
+import { TruncatePipe } from './truncate.pipe';
+
 @Component({
-  standalone: true,
-  selector: 'app-power-booster',
-  template: `
-    <h2>Power Booster</h2>
-    <p>Super power boost: {{2 | exponentialStrength: 10}}</p>
-  `,
-  imports: [ExponentialStrengthPipe],
+  selector: 'app-description',
+  imports: [TruncatePipe],
+  template: `<p>{{ description | truncate:40:'...' }}</p>`,
 })
-export class PowerBoosterComponent {}
-```
-
-
-```typescript
-import {Pipe, PipeTransform} from '@angular/core';
-/*
- * Raise the value exponentially
- * Takes an exponent argument that defaults to 1.
- * Usage:
- *   value | exponentialStrength:exponent
- * Example:
- *   {{ 2 | exponentialStrength:10 }}
- *   formats to: 1024
- */
-@Pipe({
-  standalone: true,
-  name: 'exponentialStrength',
-})
-export class ExponentialStrengthPipe implements PipeTransform {
-  transform(value: number, exponent = 1): number {
-    return Math.pow(value, exponent);
-  }
+export class DescriptionComponent {
+  description = 'A longer description that does not fit in the summary.';
 }
 ```
 
+The pipe name is written in lower camel case and has no hyphens; the class name is
+UpperCamelCase with the `Pipe` suffix. The pipe receives its input first, followed
+by the arguments supplied after colons.
 
+## Keep the transformation focused
+
+Pipes should be predictable and focused on presentation. Keep I/O, component state,
+and unrelated business rules out of `transform`. If the same transformation is
+needed outside templates, put its core logic in an ordinary TypeScript function
+and call that function from the pipe and from other code.
+
+Pipes are pure by default. Keep that default whenever possible; see
+[Pure and Impure Pipes](./pure-and-impure-pipes.md).
+
+For the full API and naming recommendations, see Angular's
+[Pipes guide](https://angular.dev/guide/templates/pipes) and
+[style guide](https://angular.dev/style-guide#style-02-09).
