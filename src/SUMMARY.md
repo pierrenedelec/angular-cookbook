@@ -75,6 +75,7 @@
 
 # Security
 - [Security Best Practices](./security/README.md)
+  - [Safe Template Bindings](./security/safe-template-bindings.md)
 
 # Performance Optimization
 - [Performance Optimization](./performances/README.md)
