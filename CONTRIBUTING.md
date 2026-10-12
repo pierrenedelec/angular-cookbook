@@ -65,6 +65,10 @@ Fill out the pull request template with details about your changes. Make sure to
 
 ## 8. Review and Collaboration
 
+### Using GitHub Copilot coding agents
+
+When GitHub Copilot coding agent is enabled for this repository, open an issue describing a focused documentation or dependency task and assign it to Copilot. Choose the **Documentation Maintainer** or **Dependency Maintainer** custom agent for the matching task. The agent will make the change, run the relevant quality checks, and open a pull request for review. The **Quality gate** workflow builds the French and English books for every pull request.
+
 Your pull request will be reviewed by the project maintainers. Be open to feedback and be willing to make any necessary changes to your contribution. Once everything is approved, your changes will be merged into the project.
 
 Thank you for your contribution to the Angular Cookbook project! 🚀🎉
