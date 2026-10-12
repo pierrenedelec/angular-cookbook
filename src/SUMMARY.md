@@ -7,6 +7,7 @@
   - [Creating Components without Selectors](composent-without-selectors/how-to-create-component-without-selectors.md)
 - [Directives](./directive/README.md)
 - [Dependency Injection](./dependency-injection/README.md)
+  - [Understanding Angular service provider scopes](./dependency-injection/service-provider-scopes.md)
 - [NgModules](./ngmodules/README.md)
 - [Pipes](./pipes/README.md)
   - [Using Pipes in Templates](./pipes/using-pipes.md)

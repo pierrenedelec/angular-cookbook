@@ -53,6 +53,238 @@ msgstr ""
 msgid "Dependency Injection"
 msgstr ""
 
+#: src/SUMMARY.md:10 src/dependency-injection/service-provider-scopes.md:1
+msgid "Understanding Angular service provider scopes"
+msgstr "Comprendre les portées des fournisseurs de services Angular"
+
+#: src/dependency-injection/index.md:3
+msgid ""
+"[Understanding Angular service provider scopes](./service-provider-scopes.md)"
+msgstr ""
+"[Comprendre les portées des fournisseurs de services Angular](./service-provider-scopes.md)"
+
+#: src/dependency-injection/service-provider-scopes.md:3
+msgid ""
+"Where you provide a service determines which parts of an Angular application "
+"can inject it, which instance they receive, and how long that instance can "
+"live. Angular resolves a dependency from the nearest injector that provides "
+"its token, so a child scope can use its own instance instead of an "
+"ancestor's."
+msgstr ""
+"L'endroit où vous fournissez un service détermine quelles parties d'une "
+"application Angular peuvent l'injecter, quelle instance elles reçoivent et "
+"combien de temps cette instance peut vivre. Angular résout une dépendance à "
+"partir de l'injecteur le plus proche qui fournit son jeton ; une portée "
+"enfant peut donc utiliser sa propre instance plutôt que celle d'un ancêtre."
+
+#: src/dependency-injection/service-provider-scopes.md:5
+msgid ""
+"An instance is created when its provider is first requested and is then "
+"reused by that injector. In other words, a provider's scope is also the "
+"boundary for sharing and caching that instance."
+msgstr ""
+"Une instance est créée lorsque son fournisseur est sollicité pour la "
+"première fois, puis réutilisée par cet injecteur. Autrement dit, la portée "
+"du fournisseur définit aussi la limite de partage et de mise en cache de "
+"cette instance."
+
+#: src/dependency-injection/service-provider-scopes.md:7
+msgid "Application-wide services with the root injector"
+msgstr "Services à l'échelle de l'application avec l'injecteur racine"
+
+#: src/dependency-injection/service-provider-scopes.md:9
+msgid ""
+"For a service shared across an application, the usual choice is `providedIn: "
+"'root'`:"
+msgstr ""
+"Pour partager un service dans toute une application, on choisit "
+"généralement `providedIn: 'root'` :"
+
+#: src/dependency-injection/service-provider-scopes.md:20
+msgid ""
+"Angular registers this provider in the application's root "
+"`EnvironmentInjector`. Components and other services in that application "
+"receive the same instance unless a nearer injector provides the same token. "
+"The instance is created on first use and remains available for the lifetime "
+"of the application."
+msgstr ""
+"Angular enregistre ce fournisseur dans l'`EnvironmentInjector` racine de "
+"l'application. Les composants et les autres services de cette application "
+"reçoivent la même instance, sauf si un injecteur plus proche fournit le même "
+"jeton. L'instance est créée lors de sa première utilisation et reste "
+"disponible pendant toute la durée de vie de l'application."
+
+#: src/dependency-injection/service-provider-scopes.md:22
+msgid ""
+"Application-level providers configured in `ApplicationConfig` (for example, "
+"the `providers` passed to `bootstrapApplication`) also belong to the root "
+"environment scope. Use that option when a provider needs explicit "
+"application configuration. Prefer one registration for a token at a given "
+"scope rather than registering the same service in multiple ways."
+msgstr ""
+"Les fournisseurs configurés au niveau de l'application dans "
+"`ApplicationConfig` (par exemple, les `providers` transmis à "
+"`bootstrapApplication`) appartiennent également à la portée de "
+"l'environnement racine. Utilisez cette option lorsqu'un fournisseur "
+"nécessite une configuration explicite de l'application. Privilégiez un seul "
+"enregistrement par jeton et par portée plutôt que d'enregistrer le même "
+"service de plusieurs façons."
+
+#: src/dependency-injection/service-provider-scopes.md:24
+msgid "Component-scoped instances"
+msgstr "Instances à portée de composant"
+
+#: src/dependency-injection/service-provider-scopes.md:26
+msgid ""
+"Add a service to a component's `providers` when each component instance "
+"needs isolated state:"
+msgstr ""
+"Ajoutez un service aux `providers` d'un composant lorsque chaque instance du "
+"composant doit disposer d'un état isolé :"
+
+#: src/dependency-injection/service-provider-scopes.md:46
+msgid ""
+"Although `DraftService` has a root provider, `DraftEditorComponent` provides "
+"the same token locally. That nearer provider takes precedence: each editor "
+"component instance gets its own `DraftService`, and components below that "
+"editor can resolve that instance. Other parts of the application that are "
+"outside the editor's component subtree continue to use the root instance."
+msgstr ""
+"Bien que `DraftService` ait un fournisseur racine, `DraftEditorComponent` "
+"fournit localement le même jeton. Ce fournisseur plus proche est prioritaire "
+": chaque instance du composant éditeur reçoit sa propre instance de "
+"`DraftService`, que les composants situés en dessous peuvent résoudre. Les "
+"autres parties de l'application, en dehors de la sous-arborescence de "
+"l'éditeur, continuent d'utiliser l'instance racine."
+
+#: src/dependency-injection/service-provider-scopes.md:48
+msgid ""
+"The component's injector owns its local service instance. When Angular "
+"destroys that component, it also destroys the injector and calls the "
+"service's `ngOnDestroy` hook, if it has one. This makes component providers "
+"useful for state that should be shared within a component subtree but not "
+"between separate instances of that subtree."
+msgstr ""
+"L'injecteur du composant possède son instance locale du service. Lorsque "
+"Angular détruit ce composant, il détruit également l'injecteur et appelle "
+"la méthode `ngOnDestroy` du service, si elle existe. Les fournisseurs de "
+"composant conviennent donc à un état partagé dans une sous-arborescence de "
+"composants, mais pas entre plusieurs instances de cette sous-arborescence."
+
+#: src/dependency-injection/service-provider-scopes.md:50
+msgid "Feature-scoped providers with routes"
+msgstr "Fournisseurs à portée de fonctionnalité avec les routes"
+
+#: src/dependency-injection/service-provider-scopes.md:52
+msgid ""
+"For a service shared by a routed feature and its descendants, register it in "
+"the route's `providers` array:"
+msgstr ""
+"Pour partager un service avec une fonctionnalité routée et ses descendants, "
+"enregistrez-le dans le tableau `providers` de la route :"
+
+#: src/dependency-injection/service-provider-scopes.md:68
+msgid ""
+"The Router creates an `EnvironmentInjector` for a route with providers. The "
+"route's component and its descendants can resolve those providers, while "
+"unrelated routes do not inherit them. If the same token is provided at the "
+"root and at the route, the route provider is nearer and takes precedence "
+"within that route's scope."
+msgstr ""
+"Le Router crée un `EnvironmentInjector` pour une route qui déclare des "
+"fournisseurs. Le composant de la route et ses descendants peuvent résoudre "
+"ces fournisseurs, contrairement aux routes sans lien avec celle-ci. Si le "
+"même jeton est fourni à la racine et dans la route, le fournisseur de la "
+"route est plus proche et est prioritaire dans la portée de cette route."
+
+#: src/dependency-injection/service-provider-scopes.md:70
+msgid ""
+"Route providers are not component providers: their lifetime follows the "
+"route's environment injector, which is managed by the Router. Do not assume "
+"that navigating away and back creates a fresh service instance. If state "
+"must reset for each component instance, provide the service on that "
+"component instead."
+msgstr ""
+"Les fournisseurs de route ne sont pas des fournisseurs de composant : leur "
+"durée de vie est liée à l'injecteur d'environnement de la route, géré par le "
+"Router. Ne supposez pas qu'une nouvelle navigation vers la route crée une "
+"nouvelle instance du service. Si l'état doit être réinitialisé pour chaque "
+"instance d'un composant, fournissez plutôt le service sur ce composant."
+
+#: src/dependency-injection/service-provider-scopes.md:72
+msgid "Choosing a scope"
+msgstr "Choisir une portée"
+
+#: src/dependency-injection/service-provider-scopes.md:74
+msgid "Provider location"
+msgstr "Emplacement du fournisseur"
+
+#: src/dependency-injection/service-provider-scopes.md:74
+msgid "Typical sharing boundary"
+msgstr "Limite de partage habituelle"
+
+#: src/dependency-injection/service-provider-scopes.md:74
+msgid "Lifetime"
+msgstr "Durée de vie"
+
+#: src/dependency-injection/service-provider-scopes.md:76
+msgid "`providedIn: 'root'` or application `providers`"
+msgstr "`providedIn: 'root'` ou `providers` de l'application"
+
+#: src/dependency-injection/service-provider-scopes.md:76
+msgid "One application"
+msgstr "Une application"
+
+#: src/dependency-injection/service-provider-scopes.md:76
+msgid "The application's root environment injector"
+msgstr "L'injecteur d'environnement racine de l'application"
+
+#: src/dependency-injection/service-provider-scopes.md:77
+msgid "Route `providers`"
+msgstr "`providers` de la route"
+
+#: src/dependency-injection/service-provider-scopes.md:77
+msgid "A route and its descendants"
+msgstr "Une route et ses descendants"
+
+#: src/dependency-injection/service-provider-scopes.md:77
+msgid "The route environment injector managed by the Router"
+msgstr "L'injecteur d'environnement de la route, géré par le Router"
+
+#: src/dependency-injection/service-provider-scopes.md:78
+msgid "Component `providers`"
+msgstr "`providers` du composant"
+
+#: src/dependency-injection/service-provider-scopes.md:78
+msgid "One component subtree"
+msgstr "Une sous-arborescence de composants"
+
+#: src/dependency-injection/service-provider-scopes.md:78
+msgid "The component's injector"
+msgstr "L'injecteur du composant"
+
+#: src/dependency-injection/service-provider-scopes.md:80
+msgid ""
+"Choose the narrowest scope that matches the intended sharing boundary. Use "
+"the root for application-wide state, route providers for feature-level "
+"dependencies, and component providers for state that belongs to a particular "
+"component instance."
+msgstr ""
+"Choisissez la portée la plus restreinte correspondant à la limite de partage "
+"souhaitée. Utilisez la racine pour l'état partagé dans toute l'application, "
+"les fournisseurs de route pour les dépendances d'une fonctionnalité et les "
+"fournisseurs de composant pour l'état propre à une instance donnée."
+
+#: src/dependency-injection/service-provider-scopes.md:82
+msgid ""
+"For the full injector search order and advanced resolution options, see "
+"[Angular's hierarchical dependency injection "
+"guide](https://angular.dev/guide/di/hierarchical-dependency-injection)."
+msgstr ""
+"Pour connaître l'ordre complet de recherche des injecteurs et les options "
+"avancées de résolution, consultez le [guide Angular sur l'injection de "
+"dépendances hiérarchique](https://angular.dev/guide/di/hierarchical-dependency-injection)."
+
 #: src/SUMMARY.md:14 src/ngmodules/index.md:1
 msgid "NgModules"
 msgstr ""
