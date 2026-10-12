@@ -45,15 +45,15 @@ For new article, just create a folder and a markdown file you can also follow in
 
 # Dependencies
 
->[`rustc`](https://www.rust-lang.org/tools/install) = 1.71.0
+>[`rustc`](https://www.rust-lang.org/tools/install) = 1.88.0
 
 <br>
 
 ### ![mdbook](https://img.shields.io/badge/mdbook-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
 ```sh
-cargo install mdbook
+cargo install mdbook --version 0.4.52 --locked
 ```
-[`mdbook`](https://github.com/rust-lang/mdBook) = "^0.4.35"
+[`mdbook`](https://github.com/rust-lang/mdBook) = "^0.4.52"
 
 <br>
 
@@ -68,7 +68,15 @@ cargo install --path .
 ```sh
 cargo install mdbook-admonish
 ```
-[`mdbook-admonish`](https://crates.io/crates/mdbook-admonish) = "^1.13.1"
+[`mdbook-admonish`](https://crates.io/crates/mdbook-admonish) = "^1.20.0"
+
+<br>
+
+### ![mdbook-angular](https://img.shields.io/badge/mdbook--angular-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
+```sh
+cargo install mdbook-angular --version 0.3.4 --locked
+```
+[`mdbook-angular`](https://crates.io/crates/mdbook-angular) = "^0.3.4"
 
 <br>
 
@@ -76,7 +84,7 @@ cargo install mdbook-admonish
 ```sh
 cargo install mdbook-i18n-helpers
 ```
-[`mdbook-i18n-helpers`](https://github.com/google/mdbook-i18n-helpers) = "^0.2.4"
+[`mdbook-i18n-helpers`](https://github.com/google/mdbook-i18n-helpers) = "^0.3.6"
 
 
 
