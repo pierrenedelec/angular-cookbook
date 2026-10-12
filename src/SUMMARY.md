@@ -51,6 +51,7 @@
 
 # Testing
 - [Unit Testing](./test-unitaires/README.md)
+  - [Testing Angular Services](./test-unitaires/testing-services.md)
 - [End-to-End Testing](./test-end-to-end/README.md)
 
 # Styling and Theming
