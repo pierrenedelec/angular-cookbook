@@ -162,6 +162,189 @@ msgstr "Gestion d'état"
 msgid "State Management Overview"
 msgstr "Gestion d'état"
 
+#: src/SUMMARY.md:60 src/state-management/live-example.md:1
+msgid "Live Component State Example"
+msgstr "Exemple d'état local au composant"
+
+#: src/state-management/index.md:3
+msgid ""
+"State is the data that influences what an application displays or how it "
+"behaves. Good state management starts with deciding who owns each piece of "
+"data, which parts of the UI need it, and how long it should live. Use the "
+"smallest scope that fits; a state library is not a prerequisite for building "
+"an Angular application."
+msgstr ""
+"L'état regroupe les données qui influencent l'affichage ou le comportement "
+"d'une application. Pour bien le gérer, commencez par déterminer qui possède "
+"chaque donnée, quelles parties de l'interface en ont besoin et combien de "
+"temps elle doit vivre. Choisissez la portée la plus limitée qui convient : "
+"une bibliothèque de gestion d'état n'est pas indispensable pour créer une "
+"application Angular."
+
+#: src/state-management/index.md:5
+msgid "Start with component state"
+msgstr "Commencer avec l'état local au composant"
+
+#: src/state-management/index.md:7
+msgid ""
+"Keep state in a component when it is only needed by that component, such as "
+"a selected tab, an expanded panel, or a small form interaction. Angular "
+"signals are a convenient way to represent synchronous state in a component. "
+"Try the [live task-counter example](live-example.md) to see writable and "
+"derived state together."
+msgstr ""
+"Conservez l'état dans un composant lorsqu'il n'est nécessaire qu'à celui-ci, "
+"par exemple pour un onglet sélectionné, un panneau déplié ou une interaction "
+"de formulaire. Les signaux Angular sont un moyen pratique de représenter un "
+"état synchrone dans un composant. Essayez l'[exemple interactif de compteur "
+"de tâches](live-example.md) pour voir ensemble l'état modifiable et l'état "
+"dérivé."
+
+#: src/state-management/live-example.md:3
+msgid ""
+"This standalone component keeps its task list local. The `completedCount` "
+"computed signal derives a value from that list, and each button updates the "
+"writable signal."
+msgstr ""
+"Ce composant autonome conserve sa liste de tâches localement. Le signal "
+"calculé `completedCount` dérive une valeur de cette liste, et chaque bouton "
+"met à jour le signal modifiable."
+
+#: src/state-management/index.md:54
+msgid ""
+"Use component inputs and outputs when a parent and child need to coordinate. "
+"For state shared by multiple components, move ownership to a service or to a "
+"common ancestor rather than maintaining separate, potentially conflicting "
+"copies."
+msgstr ""
+"Utilisez les entrées et sorties des composants pour coordonner un parent et "
+"un enfant. Si plusieurs composants doivent partager un état, confiez-en la "
+"propriété à un service ou à un ancêtre commun plutôt que de maintenir des "
+"copies séparées susceptibles d'entrer en conflit."
+
+#: src/state-management/index.md:56
+msgid "Share state with a service"
+msgstr "Partager l'état avec un service"
+
+#: src/state-management/index.md:58
+msgid ""
+"An injectable service is a good fit for state shared across a feature or "
+"application, especially when it also owns the rules for changing that state "
+"or coordinates it with an API. A service provided at the application root is "
+"shared by consumers in that application injector; providing it at a "
+"component or route scope can give a feature its own instance and lifetime."
+msgstr ""
+"Un service injectable convient bien à un état partagé dans une fonctionnalité "
+"ou dans toute l'application, notamment s'il définit aussi les règles de mise "
+"à jour de cet état ou le coordonne avec une API. Un service fourni à la "
+"racine de l'application est partagé par les consommateurs de cet injecteur ; "
+"le fournir à la portée d'un composant ou d'une route permet à une "
+"fonctionnalité d'avoir sa propre instance et sa propre durée de vie."
+
+#: src/state-management/index.md:60
+msgid ""
+"A signal-based service can keep its writable signals private, expose "
+"read-only signals and `computed` values, and offer methods for updates. "
+"Components then consume the same source of truth without depending on one "
+"another. Keep transient presentation details local unless other parts of the "
+"application genuinely need them."
+msgstr ""
+"Un service basé sur les signaux peut garder ses signaux modifiables privés, "
+"exposer des signaux en lecture seule et des valeurs `computed`, puis "
+"proposer des méthodes de mise à jour. Les composants utilisent alors la même "
+"source de vérité sans dépendre les uns des autres. Gardez localement les "
+"détails d'affichage temporaires, sauf si d'autres parties de l'application "
+"en ont réellement besoin."
+
+#: src/state-management/index.md:62
+msgid "When to use RxJS or a store library"
+msgstr "Quand utiliser RxJS ou une bibliothèque de gestion d'état"
+
+#: src/state-management/index.md:64
+msgid ""
+"Signals work well for synchronous state and derived values. RxJS remains "
+"useful for asynchronous streams, such as composing HTTP requests, user "
+"events, cancellation, or time-based operations. Use the tools that fit the "
+"data flow; avoid maintaining the same value independently in both a signal "
+"and an observable."
+msgstr ""
+"Les signaux conviennent bien à l'état synchrone et aux valeurs dérivées. "
+"RxJS reste utile pour les flux asynchrones, par exemple pour composer des "
+"requêtes HTTP, des événements utilisateur, des annulations ou des opérations "
+"dépendant du temps. Choisissez l'outil adapté au flux de données et évitez "
+"de maintenir indépendamment une même valeur dans un signal et un observable."
+
+#: src/state-management/index.md:66
+msgid ""
+"A larger store library such as [NgRx Store](https://ngrx.io/guide/store) may "
+"be worthwhile when the application benefits from explicit actions and "
+"reducers, standardized effects, centralized state transitions, or supporting "
+"tooling across a large team. Compare those benefits with the additional "
+"concepts and maintenance cost. For a small feature, a component signal or a "
+"focused service is often easier to understand and test."
+msgstr ""
+"Une bibliothèque de store plus complète, comme [NgRx "
+"Store](https://ngrx.io/guide/store), peut être utile si l'application tire "
+"parti d'actions et de réducteurs explicites, d'effets standardisés, de "
+"transitions d'état centralisées ou d'outils communs à une grande équipe. "
+"Mettez ces avantages en regard des concepts supplémentaires et du coût de "
+"maintenance. Pour une fonctionnalité réduite, un signal de composant ou un "
+"service ciblé est souvent plus simple à comprendre et à tester."
+
+#: src/state-management/index.md:68
+msgid "A practical checklist"
+msgstr "Quelques bonnes pratiques"
+
+#: src/state-management/index.md:70
+msgid "Keep each value close to the component or feature that owns it."
+msgstr ""
+"Gardez chaque valeur au plus près du composant ou de la fonctionnalité qui en "
+"est responsable."
+
+#: src/state-management/index.md:71
+msgid ""
+"Derive values with `computed` instead of storing duplicate values that can "
+"get out of sync."
+msgstr ""
+"Dérivez les valeurs avec `computed` plutôt que de stocker des doublons qui "
+"risquent de diverger."
+
+#: src/state-management/index.md:72
+msgid ""
+"Encapsulate shared updates behind service methods, and expose only the state "
+"consumers need."
+msgstr ""
+"Encapsulez les mises à jour partagées dans des méthodes de service et "
+"n'exposez que l'état nécessaire aux consommateurs."
+
+#: src/state-management/index.md:73
+msgid ""
+"Keep server persistence, caching, and UI-only state distinct; a client-side "
+"store does not replace a backend."
+msgstr ""
+"Distinguez la persistance côté serveur, la mise en cache et l'état réservé à "
+"l'interface ; un store côté client ne remplace pas un serveur."
+
+#: src/state-management/index.md:74
+msgid ""
+"Test state transitions and important derived values, then test the "
+"components or services that use them."
+msgstr ""
+"Testez les transitions d'état et les principales valeurs dérivées, puis les "
+"composants ou services qui les utilisent."
+
+#: src/state-management/index.md:76
+msgid ""
+"For details on signal behavior, see the [Angular Signals "
+"guide](https://angular.dev/guide/signals). For service scopes and dependency "
+"injection, see the [Angular dependency injection "
+"guide](https://angular.dev/guide/di)."
+msgstr ""
+"Pour en savoir plus sur le comportement des signaux, consultez le [guide "
+"Angular sur les signaux](https://angular.dev/guide/signals). Pour les "
+"portées des services et l'injection de dépendances, consultez le [guide "
+"Angular sur l'injection de dépendances](https://angular.dev/guide/di)."
+
 #: src/SUMMARY.md:48 src/SUMMARY.md:49 src/rxjs/index.md:1
 msgid "RxJS"
 msgstr ""

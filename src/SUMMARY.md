@@ -58,6 +58,7 @@
 
 # State Management
 - [State Management Overview](./state-management/README.md)
+  - [Live Component State Example](./state-management/live-example.md)
 
 # RxJS
 - [RxJS](./rxjs/README.md)
