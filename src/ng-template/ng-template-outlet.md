@@ -1,6 +1,6 @@
 # How to use ngTemplateOutlet ?
 
-```admonish note
+```
 `ngTemplateOutlet` allows you to dynamically render templates in your Angular components, which can be very useful for creating reusable and flexible UI components.
 ```
 

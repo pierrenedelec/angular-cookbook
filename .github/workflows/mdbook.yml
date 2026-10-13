@@ -31,7 +31,6 @@ jobs:
         pages: write
         id-token: write
       env:
-        MDBOOK_VERSION: 0.4.52
         LANGUAGES: "en"  # Add other languages as needed
       steps:
       - name: Check out
@@ -51,11 +50,8 @@ jobs:
             target/
           key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
           restore-keys: ${{ runner.os }}-cargo-
-      - name: Install dependencies
-        run: |
-          cargo install --force --version ${MDBOOK_VERSION} mdbook
-      - name: Install dependencies for mdbook
-        uses: ./.github/workflows/install-mdbook
+      - name: Install mdBook and dependencies
+        uses: ./.github/workflows/install-deps
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5

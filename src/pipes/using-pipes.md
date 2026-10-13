@@ -44,6 +44,10 @@ components are standalone by default.
 Use a colon to pass an argument. Separate multiple arguments with additional
 colons; their order follows the pipe's `transform` method signature.
 
+```ts,angular
+{{ 3*2 }}
+```
+
 ```html
 {{ birthday | date:'yyyy-MM-dd':'UTC' }}
 {{ amount | number:'1.2-2' }}

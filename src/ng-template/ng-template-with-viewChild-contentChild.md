@@ -1,12 +1,12 @@
 # ng-template with ViewChild/ViewChildren and ContentChild/ContentChildren ?
-```admonish note
+```
 In Angular, ViewChild, ViewChildren, ContentChild, and ContentChildren are used for component communication. They enable a parent component to access its child components.
 ```
 
 
 ## ViewChild and ViewChildren
 
-```admonish note
+```
 `ViewChild` is used to access a single child component or a DOM element, while `ViewChildren` is used when there are multiple child components or DOM elements of the same type. 
 ```
 
@@ -77,7 +77,7 @@ In this case, `ViewChildren` returns a `QueryList` of `HelloComponent` instances
 
 ## ContentChild and ContentChildren
 
-```admonish note
+```
 `ContentChild` and `ContentChildren` are similar to `ViewChild` and `ViewChildren`, but they are used to access projected content (content that is passed from a parent component to a child component through `ng-content`).
 ```
 Here's an example of how to use `ContentChild`:

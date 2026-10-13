@@ -1,6 +1,6 @@
 # The ng-template with ngIf directive
 
-```admonish note
+```
 `<ng-template>` in Angular is a angular `element` used to define and render content dynamically within components. It's a versatile tool for creating reusable templates, handling rendering logic, and improving code organization by separating content from its presentation, commonly used with structural directives like `*ngIf`, `*ngFor`, and `*ngSwitch`.
 ```
 

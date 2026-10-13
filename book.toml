@@ -2,12 +2,11 @@
 authors = ["Pierre Nédélec"]
 description = "Angular-CookBook"
 language = "fr"
-multilingual = true
 src = "src"
 title = "Angular-CookBook"
 
 [rust]
-edition = "2021"
+edition = "2024"
 
 [build]
 extra-watch-dirs = ["po"]
@@ -15,18 +14,10 @@ extra-watch-dirs = ["po"]
 [output.html]
 default-theme = "ang"
 preferred-dark-theme = "ang"
-additional-css = ['theme/mdbook-admonish.css']
+additional-css = ['theme/mdbook-admonish.css', "./mdbook-admonish.css"]
 git-repository-url = "https://github.com/multivers-dev/angular-cookbook"
 git-repository-icon = "fa-github"
 edit-url-template = "https://github.com/multivers-dev/angular-cookbook/blob/main/{path}"
-
-[preprocessor.admonish]
-command = "mdbook-admonish"
-assets_version = "3.0.1" # do not edit: managed by `mdbook-admonish install`
-
-[preprocessor.gettext]
-command = "mdbook-gettext"
-after = ["links"]
 
 [output.html.fold]
 enable = true

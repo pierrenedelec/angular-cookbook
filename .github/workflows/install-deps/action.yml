@@ -1,0 +1,16 @@
+name: Install mdBook and dependencies
+
+description: Install mdBook and the binaries used to build the book.
+
+runs:
+  using: composite
+  steps:
+    - name: Install mdBook
+      run: cargo install --locked --version 0.5.4 mdbook
+      shell: bash
+    - name: Install mdBook preprocessors and renderers
+      run: |
+        cargo install --locked --version 0.5.1 mdbook-angular
+        cargo install --locked --version 0.4.0 mdbook-i18n-helpers
+        cargo install --locked --version 0.3.1 mdbook-svgbob
+      shell: bash

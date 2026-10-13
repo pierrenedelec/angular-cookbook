@@ -3,7 +3,7 @@
 ## TL;DR
 
 
-```admonish note
+```
 Removing selector on component which are directly used by angular router
 Angular will render a component without selector like this
 <router-outlet><ng-component>....</ng-component></router-outlet> 
