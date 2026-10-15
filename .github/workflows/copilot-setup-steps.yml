@@ -5,11 +5,11 @@ on:
   push:
     paths:
       - .github/workflows/copilot-setup-steps.yml
-      - .github/workflows/install-mdbook/**
+      - .github/workflows/install-deps/**
   pull_request:
     paths:
       - .github/workflows/copilot-setup-steps.yml
-      - .github/workflows/install-mdbook/**
+      - .github/workflows/install-deps/**
 
 jobs:
   copilot-setup-steps:
@@ -18,16 +18,14 @@ jobs:
       contents: read
     steps:
       - name: Check out
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Install Rust
         run: |
           curl https://sh.rustup.rs -sSf | sh -s -- -y
-      - name: Install mdBook
-        run: cargo install --force --version 0.4.52 mdbook
-      - name: Install mdBook preprocessors
-        uses: ./.github/workflows/install-mdbook
+      - name: Install mdBook and dependencies
+        uses: ./.github/workflows/install-deps
       - name: Set up Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: 24
           cache: npm

@@ -1,13 +1,11 @@
 [package]
 name = "angular-cookbook"
 version = "0.1.0"
-edition = "2021"
+edition = "2024"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-mdbook = "^0.4.48"
-mdbook-admonish = "^1.20.0"
-mdbook-angular = "^0.3.4"
-mdbook-i18n-helpers = "^0.3.6"
-mdbook-svgbob = "^0.2.2"
+mdbook = "^0.5.4"
+mdbook-i18n-helpers = "^0.4.0"
+mdbook-svgbob = "^0.3.1"

@@ -247,7 +247,7 @@ this.myForm = this.fb.group(
 
 ## 6. Summary
 
-```admonish note title="Summary"
+```
 - Angular provides a set of built-in validators that cover common use cases.
 - Validators can be combined for more complex scenarios.
 - Custom validators can be created to handle specific use cases.

@@ -20,73 +20,18 @@ For new article, just create a folder and a markdown file you can also follow in
 # How to Install ?
 
 ## Prerequisites
-
-> ***For the installation of the project, you need to install and use a bash terminal.***
-> you can use [git bash](https://git-scm.com/downloads) or [cmder](https://cmder.net/)
-
-### Rust
 >### ![Rust](https://img.shields.io/badge/rust-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
-> 
-> The way to install rustup differs by platform:
-> * On Unix:
->   ``` shell
->   curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
->   ```
->   in your shell, This downloads and runs rustup-init.sh
-> 
-> * On Windows download and run rustup-init.exe from [here](https://www.rust-lang.org/tools/install)
->
-> ___
->
-> For more information about installation of rustup, see the [rustup documentation](https://forge.rust-lang.org/infra/other-installation-methods.html).
->
+>### ![Cargo](https://img.shields.io/badge/cargo-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
 
 
-
-# Dependencies
-
->[`rustc`](https://www.rust-lang.org/tools/install) = 1.88.0
-
-<br>
-
-### ![mdbook](https://img.shields.io/badge/mdbook-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
+Install mdBook and the renderers used by this book
 ```sh
-cargo install mdbook --version 0.4.52 --locked
+cargo install --locked --version 0.5.4 mdbook
+cargo install --locked --version 0.5.1 mdbook-angular
+cargo install --locked --version 0.4.0 mdbook-i18n-helpers
+cargo install --locked --version 0.3.1 mdbook-svgbob
 ```
-[`mdbook`](https://github.com/rust-lang/mdBook) = "^0.4.52"
 
-<br>
-
-### ![Cargo](https://img.shields.io/badge/cargo-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
-Install dependencies from Cargo.toml
-```sh
-cargo install --path .
-```
-<br>
-
-### ![mdbook-admonish](https://img.shields.io/badge/mdbook--admonish-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
-```sh
-cargo install mdbook-admonish
-```
-[`mdbook-admonish`](https://crates.io/crates/mdbook-admonish) = "^1.20.0"
-
-<br>
-
-### ![mdbook-angular](https://img.shields.io/badge/mdbook--angular-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
-```sh
-cargo install mdbook-angular --version 0.3.4 --locked
-```
-[`mdbook-angular`](https://crates.io/crates/mdbook-angular) = "^0.3.4"
-
-<br>
-
-### ![mdbook-i18n-helpers](https://img.shields.io/badge/mdbook--i18n--helpers-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
-```sh
-cargo install mdbook-i18n-helpers --version 0.3.6 --locked
-```
-[`mdbook-i18n-helpers`](https://github.com/google/mdbook-i18n-helpers) = "^0.3.6"
-
-This package installs the `mdbook-gettext` and `mdbook-xgettext` binaries used by the book's i18n workflow.
 
 ### i18n
 > ## ![i18n](https://img.shields.io/badge/i18n-%23000000.svg?style=for-the-badge&logo=rust&logoColor=white)
@@ -114,13 +59,13 @@ This package installs the `mdbook-gettext` and `mdbook-xgettext` binaries used b
 >* Run `build` in fr 
 >
 >```sh
->  MDBOOK_BOOK__LANGUAGE=fr mdbook build -d >book/fr
+>  MDBOOK_BOOK__LANGUAGE=fr mdbook build --dest-dir book/fr
 >```
 >
 >* Run `build` in en 
 >
 >```sh
->  MDBOOK_BOOK__LANGUAGE=en mdbook build -d >book/en
+>  MDBOOK_BOOK__LANGUAGE=en mdbook build --dest-dir book/en
 >```
 <br>
 
